@@ -14,8 +14,3 @@ resources:
 commonLabels:
   app: adr-api
 
-# Secret generator for database URL
-secretGenerator:
-  - name: database-url
-    literals:
-      - url=postgres://app_user:dev_only_pwd@localhost:5432/app_db
