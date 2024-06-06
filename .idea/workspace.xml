@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="95bb99b1-cc5a-48b9-9d12-385e2281218d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/sets/overlays/dev/core-apps.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/services/sets/overlays/dev/core-apps.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +81,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1717692216886</updated>
-      <workItem from="1717692218449" duration="8853000" />
+      <workItem from="1717692218449" duration="10070000" />
     </task>
     <servers />
   </component>

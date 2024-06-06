@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: adr-api
-          image: ghcr.io/tyler-harpool/poc-ocfs/adr_api:latest
+          image: ghcr.io/tyler-harpool/poc-ocfs/adr_api:main@sha256:593941650f6a6e04abbabeab58b816ea82a598be7efd0c64dbdc4ad724e6858a
           ports:
             - containerPort: 3000
           env:
