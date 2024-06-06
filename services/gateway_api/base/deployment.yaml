@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: gateway-api
-          image: ghcr.io/tyler-harpool/poc-ocfs/gateway_api:main@sha256:8305aac458595d1b8a49863e442bc758d39eee80e2a5576872e9788d5013b12a
+          image: ghcr.io/tyler-harpool/poc-ocfs/gateway_api:0.0.1-arm64
           ports:
             - containerPort: 8000
           env:
