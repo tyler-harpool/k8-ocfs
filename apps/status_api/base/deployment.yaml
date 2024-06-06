@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: status-api
+  labels:
+    app: status-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: status-api
+  template:
+    metadata:
+      labels:
+        app: status-api
+    spec:
+      containers:
+        - name: status-api
+          image: ghcr.io/tyler-harpool/poc-ocfs/status_api:latest
+          ports:
+            - containerPort: 3016
+          env:
+            - name: DATABASE_URL
+              value: "postgres://app_user:dev_only_pwd@postgres-service:5432/app_db"

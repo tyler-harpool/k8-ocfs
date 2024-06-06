@@ -1,0 +1,21 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# Name prefix to add to all resources
+#namePrefix: adr-api-
+
+# Common resources
+resources:
+  - deployment.yaml
+  - service.yaml
+  - configmap.yaml
+
+# Optional: Common labels to add to all resources
+commonLabels:
+  app: adr-api
+
+# Secret generator for database URL
+secretGenerator:
+  - name: database-url
+    literals:
+      - url=postgres://app_user:dev_only_pwd@localhost:5432/app_db

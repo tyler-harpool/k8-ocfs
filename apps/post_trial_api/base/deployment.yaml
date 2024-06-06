@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: post-trial-api
+  labels:
+    app: post-trial-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: post-trial-api
+  template:
+    metadata:
+      labels:
+        app: post-trial-api
+    spec:
+      containers:
+        - name: post-trial-api
+          image: ghcr.io/tyler-harpool/poc-ocfs/post_trial_api:latest
+          ports:
+            - containerPort: 3012
+          env:
+            - name: DATABASE_URL
+              value: "postgres://app_user:dev_only_pwd@postgres-service:5432/app_db"

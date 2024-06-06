@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: attorney-advocate-api
+  labels:
+    app: attorney-advocate-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: attorney-advocate-api
+  template:
+    metadata:
+      labels:
+        app: attorney-advocate-api
+    spec:
+      containers:
+        - name: attorney-advocate-api
+          image: ghcr.io/tyler-harpool/poc-ocfs/attorney_advocate_api:latest
+          ports:
+            - containerPort: 3001
+          env:
+            - name: DATABASE_URL
+              value: "postgres://app_user:dev_only_pwd@postgres-service:5432/app_db"

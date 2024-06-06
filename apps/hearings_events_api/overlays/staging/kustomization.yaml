@@ -1,0 +1,6 @@
+resources:
+  - ../../base
+
+images:
+  - name: ghcr.io/tyler-harpool/poc-ocfs/hearings_events_api
+    newTag: main

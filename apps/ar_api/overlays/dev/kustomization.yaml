@@ -1,0 +1,19 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ../../base
+
+patchesStrategicMerge:
+  - patch-deployment.yaml
+
+# Environment specific configurations
+configMapGenerator:
+  - name: adr-api-dev-config
+    literals:
+      - LOG_LEVEL=debug
+# Overriding secret for dev environment if needed
+secretGenerator:
+  - name: database-url
+    literals:
+      - url=postgres://app_user:dev_only_pwd@postgres-service:5432/app_db

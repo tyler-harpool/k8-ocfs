@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: case-data-api
+  labels:
+    app: case-data-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: case-data-api
+  template:
+    metadata:
+      labels:
+        app: case-data-api
+    spec:
+      containers:
+        - name: case-data-api
+          image: ghcr.io/tyler-harpool/poc-ocfs/case_data_api:latest
+          ports:
+            - containerPort: 3002
+          env:
+            - name: DATABASE_URL
+              value: "postgres://app_user:dev_only_pwd@postgres-service:5432/app_db"

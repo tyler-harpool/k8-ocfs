@@ -1,0 +1,6 @@
+resources:
+  - ../../base
+  - service.yaml
+images:
+  - name: ghcr.io/tyler-harpool/poc-ocfs/gateway_api
+    newTag: main

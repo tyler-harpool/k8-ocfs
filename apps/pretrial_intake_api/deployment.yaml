@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pretrial-intake-api
+  labels:
+    app: pretrial-intake-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pretrial-intake-api
+  template:
+    metadata:
+      labels:
+        app: pretrial-intake-api
+    spec:
+      containers:
+        - name: pretrial-intake-api
+          image: ghcr.io/tyler-harpool/poc-ocfs/pretrial_intake_api:latest
+          ports:
+            - containerPort: 3013
+          env:
+            - name: DATABASE_URL
+              value: "postgres://app_user:dev_only_pwd@postgres-service:5432/app_db"

@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pleadings-api
+  labels:
+    app: pleadings-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pleadings-api
+  template:
+    metadata:
+      labels:
+        app: pleadings-api
+    spec:
+      containers:
+        - name: pleadings-api
+          image: ghcr.io/tyler-harpool/poc-ocfs/pleadings_api:latest
+          ports:
+            - containerPort: 3011
+          env:
+            - name: DATABASE_URL
+              value: "postgres://app_user:dev_only_pwd@postgres-service:5432/app_db"

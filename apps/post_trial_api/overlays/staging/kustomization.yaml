@@ -1,0 +1,6 @@
+resources:
+  - ../../base
+
+images:
+  - name: ghcr.io/tyler-harpool/poc-ocfs/post_trial_api
+    newTag: main

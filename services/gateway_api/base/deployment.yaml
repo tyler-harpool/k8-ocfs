@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gateway-api
+  labels:
+    app: gateway-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gateway-api
+  template:
+    metadata:
+      labels:
+        app: gateway-api
+    spec:
+      containers:
+        - name: gateway-api
+          image: ghcr.io/tyler-harpool/poc-ocfs/gateway_api:latest
+          ports:
+            - containerPort: 8000
+          env:
+            - name: ADR_API_URL
+              value: "http://adr-api"
+            - name: CASE_DATA_API_URL
+              value: "http://case-data-api"
+            - name: SANCTIONS_API_URL
+              value: "http://sanctions-api"
+            - name: ATTORNEY_ADVOCATE_API_URL
+              value: "http://attorney-advocate-api"
+            - name: CHARGES_API_URL
+              value: "http://charges-api"
+            - name: CIVIL_JUDGMENTS_API_URL
+              value: "http://civil-judgments-api"
+            - name: DEPENDENCY_PERMANENCY_API_URL
+              value: "http://dependency-permanency-api"
+            - name: DIVERSION_API_URL
+              value: "http://diversion-api"
+            - name: HEARINGS_EVENTS_API_URL
+              value: "http://hearings-events-api"
+            - name: MOTIONS_FILINGS_API_URL
+              value: "http://motions-filings-api"
+            - name: ORDERS_API_URL
+              value: "http://orders-api"
+            - name: PARTICIPANTS_API_URL
+              value: "http://participants-api"
+            - name: PLEADINGS_API_URL
+              value: "http://pleadings-api"
+            - name: POST_TRIAL_API_URL
+              value: "http://post-trial-api"
+            - name: PRETRIAL_INTAKE_API_URL
+              value: "http://pretrial-intake-api"
+            - name: PROBATE_API_URL
+              value: "http://probate-api"
+            - name: STATUS_API_URL
+              value: "http://status-api"

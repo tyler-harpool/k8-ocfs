@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: post-trial-api
+spec:
+  selector:
+    app: post-trial-api
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3012
+  type: ClusterIP

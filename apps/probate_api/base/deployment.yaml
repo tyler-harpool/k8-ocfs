@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: probate-api
+  labels:
+    app: probate-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: probate-api
+  template:
+    metadata:
+      labels:
+        app: probate-api
+    spec:
+      containers:
+        - name: probate-api
+          image: ghcr.io/tyler-harpool/poc-ocfs/probate_api:latest
+          ports:
+            - containerPort: 3014
+          env:
+            - name: DATABASE_URL
+              value: "postgres://app_user:dev_only_pwd@postgres-service:5432/app_db"

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: charges-api
+spec:
+  selector:
+    app: charges-api
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3003
+  type: ClusterIP

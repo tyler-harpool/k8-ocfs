@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: microservices-applications
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        repoURL: 'https://github.com/tyler-harpool/k8-ocfs.git'
+        revision: HEAD
+        directories:
+          - path: 'apps/*/overlays/staging'
+  template:
+    metadata:
+      name: '{{path.basename}}'
+    spec:
+      project: default
+      source:
+        repoURL: 'https://github.com/tyler-harpool/k8-ocfs.git'
+        targetRevision: HEAD
+        path: '{{path}}'
+      destination:
+        server: 'https://kubernetes.default.svc'
+        namespace: '{{path.basename}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true

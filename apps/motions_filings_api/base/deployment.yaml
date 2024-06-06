@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: motions-filings-api
+  labels:
+    app: motions-filings-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: motions-filings-api
+  template:
+    metadata:
+      labels:
+        app: motions-filings-api
+    spec:
+      containers:
+        - name: motions-filings-api
+          image: ghcr.io/tyler-harpool/poc-ocfs/motions_filings_api:latest
+          ports:
+            - containerPort: 3008
+          env:
+            - name: DATABASE_URL
+              value: "postgres://app_user:dev_only_pwd@postgres-service:5432/app_db"

@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hearings-events-api
+  labels:
+    app: hearings-events-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hearings-events-api
+  template:
+    metadata:
+      labels:
+        app: hearings-events-api
+    spec:
+      containers:
+        - name: hearings-events-api
+          image: ghcr.io/tyler-harpool/poc-ocfs/hearings_events_api:latest
+          ports:
+            - containerPort: 3007
+          env:
+            - name: DATABASE_URL
+              value: "postgres://app_user:dev_only_pwd@postgres-service:5432/app_db"

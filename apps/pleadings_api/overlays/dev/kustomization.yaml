@@ -1,0 +1,6 @@
+resources:
+  - ../../base
+
+images:
+  - name: ghcr.io/tyler-harpool/poc-ocfs/pleadings_api
+    newTag: main
