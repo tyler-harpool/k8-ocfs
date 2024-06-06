@@ -9,7 +9,7 @@ spec:
         repoURL: 'https://github.com/tyler-harpool/k8-ocfs.git'
         revision: HEAD
         directories:
-          - path: 'apps/**/overlays/dev'
+          - path: 'apps/*/overlays/dev'
   template:
     metadata:
       name: '{{path.basename}}'
@@ -18,7 +18,7 @@ spec:
       source:
         repoURL: 'https://github.com/tyler-harpool/k8-ocfs.git'
         targetRevision: HEAD
-        path: '{{path}}'
+        path: '{{path[2]}}-dev'
       destination:
         server: 'https://kubernetes.default.svc'
         namespace: '{{path.basename}}'
